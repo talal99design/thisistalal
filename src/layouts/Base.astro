@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import MenuBar from '../components/MenuBar.astro';
+import Analytics from '../components/Analytics.astro';
 const { title = 'Talal Athar — Product Designer', description = 'Engineer turned product designer in Melbourne, Australia. Australian PR with full working rights.' } = Astro.props;
 ---
 <!doctype html>
@@ -13,6 +14,7 @@ const { title = 'Talal Athar — Product Designer', description = 'Engineer turn
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🖥️</text></svg>" />
+  <Analytics />
 </head>
 <body>
   <MenuBar />
