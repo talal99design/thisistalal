@@ -1,0 +1,40 @@
+---
+import Base from '../layouts/Base.astro';
+import Window from '../components/Window.astro';
+const rows = [
+  { k: 'Email', v: 'talalathar.au@gmail.com', href: 'mailto:talalathar.au@gmail.com', icon: '✉️' },
+  { k: 'Phone', v: '+61 429 916 442', href: 'tel:+61429916442', icon: '📞' },
+  { k: 'LinkedIn', v: 'linkedin.com/in/talalathar', href: 'https://www.linkedin.com/in/talalathar/', icon: '💼', ext: true },
+  { k: 'YouTube', v: '@xyTalal', href: 'https://www.youtube.com/@xyTalal', icon: '▶️', ext: true },
+];
+---
+<Base title="Reach out · Talal Athar">
+  <div class="case contact">
+    <Window title="reach_out.app" class="ct-win">
+      <h1 class="ab-title">Let’s talk</h1>
+      <p class="ct-lede">Hiring for a product designer? I’d love to hear about it.</p>
+      <p class="ct-pr"><span aria-hidden="true">🇦🇺</span> Australian Permanent Resident (PR) | Full working rights · 📍 Melbourne, Australia</p>
+      <ul class="ct-list">
+        {rows.map((r) => (
+          <li>
+            <span class="ct-ic" aria-hidden="true">{r.icon}</span>
+            <span class="ct-k">{r.k}</span>
+            <a class="ct-v" href={r.href} target={r.ext ? '_blank' : undefined} rel={r.ext ? 'noopener' : undefined}>{r.v}</a>
+            <button class="btn btn--light ct-copy" type="button" data-copy={r.k === 'LinkedIn' ? r.href : r.v}>Copy</button>
+          </li>
+        ))}
+      </ul>
+      <div class="cta-row">
+        <a class="btn" href="mailto:talalathar.au@gmail.com">Email me</a>
+        <a class="btn btn--light" href="/#work">See my work</a>
+      </div>
+    </Window>
+  </div>
+  <script>
+    document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach((b) => b.addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(b.dataset.copy!); b.textContent = 'Copied ✓'; }
+      catch { b.textContent = 'Select & copy'; }
+      setTimeout(() => (b.textContent = 'Copy'), 1600);
+    }));
+  </script>
+</Base>

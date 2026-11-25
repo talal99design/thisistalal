@@ -1,0 +1,47 @@
+---
+import { Image } from 'astro:assets';
+import freya from '../assets/av-freya.png';
+import nash from '../assets/av-nash.png';
+import fredrik from '../assets/av-fredrik.png';
+import tarald from '../assets/av-tarald.png';
+import Window from './Window.astro';
+
+const notes = [
+  { name: 'Freya Stockman', role: 'Designer teaching teams how to become AI-native', rel: 'Mentored Talal · Aug 2026', av: freya,
+    body: ["I see Talal as a rising up and coming star in the Australia design scene after I mentored him earlier this year on AI mastery using coding tools. He really stood out to me as someone I would want on my team because he's an extremely fast learner, deeply curious, has a strong eye for craft, comfortable with coding tools, highly collaborative, while also having a really calm presence. Any team would be lucky to have him!"] },
+  { name: 'M. Nash', role: 'Founder, Squig.com & integry.ai', rel: 'Senior to Talal · Jun 2026', av: nash,
+    body: ['Talal is one of those rare creatives who has the ability to look at things in completely new ways. Most people eventually produce more of the same, but Talal consistently generates solutions that are both novel and interesting.', 'Everything he does brings a unique element of fun and play, which I find increasingly rare in a world where AI is eating up our authenticity. You need people like Talal who bring the soul into products.'] },
+  { name: 'Fredrik Scheide', role: 'Former VP of Design & Engineering, Telenor Group', rel: 'Mentored Talal · Sep 2021', av: fredrik,
+    body: ['Our paths first crossed during my position as Vice President of Design and Engineering at Telenor Group. I was at the time one of the expert advisors of an internal global incubator program called “Ignite”. When we first met I was blown away by this young man’s enthusiasm and eagerness to succeed. Even though his team didn’t succeed in making our program, he had gone through my initial training before the qualification rounds, and he reached out directly to me and asked how he could learn more about user research and design. When I later formed Telenor Design Academy, I invited Talal specifically to apply. At this academy, we taught presentation techniques, user research, design thinking and basic design methodology. Talal came from an engineering background, and he had no previous qualifications apart from his intense desire to learn. Still, he blew everyone away with his energy and momentum - and he finished the academy as one of the top students. His willingness to learn is unprecedented, and I’ve never met anyone who works harder and who invests so much of his time and talents in the tasks in front of him. There are certain qualities in people I cherish, hard work, humility, respect, curiosity and empathy, and Talal possess all five.', 'It’s not just his eagerness to learn and grow that impresses me, but his amazing ability to regroup and stay positive when faced with setbacks is maybe an equally important trait he possesses. His can-do attitude and eagerness to come out at the other end richer in knowledge and skills are cherished not just by me, but also by my peers on the Ignite program and the academy, who often mentioned Talal his our talks. These last three years I’ve personally mentored Talal, and I wish for his success above all.'] },
+  { name: 'Tarald Trønnes', role: 'Underdirektør for forretningsutvikling', rel: 'Worked with Talal · Apr 2021', av: tarald,
+    body: ['The business world is full of anonymous companies with similar looking people with similar looking clothes doing their job with average energy while thinking about their paycheck. If you want to stand out in the market, you need people with a different profile. You need people like Talal! From the first moment I met Talal, I recognized his incredible energy. He energizes everyone around him with his curiosity, drive and desire to make a change. He is one of these rare people who you know will make something magical. His combination of deep technical knowledge with his creative mindset enables solutions serving both rational and emotional needs of humans. Get him onboard, set ambitious goals, unleash his energy and see your company flourish and monitor the results. Let the magic begin!'] },
+];
+---
+<h2 class="folder-label" id="notes"><span class="folder" aria-hidden="true">🗒️</span> Notes from people I’ve worked with</h2>
+<Window title="notes" class="notes-win">
+  <p class="notes-src notes-src--top">From my <a href="https://www.linkedin.com/in/talalathar/details/recommendations/" target="_blank" rel="noopener">LinkedIn recommendations ↗</a></p>
+
+  <div class="notes">
+    {[[0, 2], [1, 3]].map((col) => (
+      <div class="notes-col">
+        {col.map((i) => { const n = notes[i]; const long = n.body.join(' ').length > 1000; return (
+          <article class:list={['note', long && 'note--long']} style={`--tilt:${[-1.2, 0.8, 0.6, -0.9][i]}deg`}>
+            <span class="tape" aria-hidden="true"></span>
+            <div class="note-text" id={`note-${i}`}>{n.body.map((p) => <p>{p}</p>)}</div>
+            {long && <button class="note-more" type="button" aria-expanded="false" aria-controls={`note-${i}`}>Read the full note</button>}
+            <footer class="note-by">
+              <Image src={n.av} alt="" width={48} height={48} class="note-av" />
+              <div><strong>{n.name}</strong><span>{n.role}</span><em>{n.rel}</em></div>
+            </footer>
+          </article>
+        ); })}
+      </div>
+    ))}
+  </div>
+  <script>
+    document.querySelectorAll<HTMLButtonElement>('.note-more').forEach((b) => b.addEventListener('click', () => {
+      const note = b.closest('.note')!; const open = note.classList.toggle('open');
+      b.setAttribute('aria-expanded', String(open)); b.textContent = open ? 'Show less' : 'Read the full note';
+    }));
+  </script>
+</Window>

@@ -1,0 +1,85 @@
+---
+import Base from '../layouts/Base.astro';
+import Window from '../components/Window.astro';
+import Fig from '../components/Fig.astro';
+import Glance from '../components/Glance.astro';
+import NextCase from '../components/NextCase.astro';
+import { Image } from 'astro:assets';
+import hero from '../assets/klarna/hero.jpg';
+import roleimg from '../assets/klarna/roleimg.jpg';
+import sprint from '../assets/klarna/sprint.jpg';
+import skeletons from '../assets/klarna/skeletons.jpg';
+import nav from '../assets/klarna/nav.jpg';
+import hifi from '../assets/klarna/hifi.jpg';
+import mockup from '../assets/klarna/mockup.jpg';
+---
+<Base title="Klarna case study · Talal Athar">
+  <div class="case">
+    <Window title="klarna_case_study" variant="dark" class="case-head">
+      <a class="back" href="/">← Back to homepage</a>
+      <div class="case-head-grid">
+        <div>
+          <h1 class="case-title">Klarna</h1>
+          <p class="case-tags">Interface · Interaction · Experience</p>
+          <p class="case-lede">Klarna.com was redesigned to give shoppers a more interactive experience. People could now reach their favourite stores instantly and see new offers from those stores all in one place.</p>
+        </div>
+        <div class="case-head-art">
+          <Image src={hero} alt="Klarna brand photography" widths={[500, 780]} sizes="(max-width: 900px) 100vw, 480px" loading="eager" />
+          <p class="photo-credit">📸 Photo: Snask, the studio that created Klarna’s new brand identity with us.</p>
+        </div>
+      </div>
+    </Window>
+
+    <Glance
+      role="I was selected from the Telenor Design Academy for a design exchange between Telenor and Klarna. I joined as a product designer reporting to a senior designer at Klarna, and was later invited to Singapore to co-facilitate a design sprint with the wider Klarna team."
+      items={[['Launch', 'December 2022'], ['Company', 'Klarna'], ['Time', '2 months / 4 sprints'], ['Team', 'Design, Product, Marketing, Engineering']]}
+    >
+      <div class="outcome-stats">
+        <div><b>+35%</b><span>overall click-through rate</span></div>
+        <div><b>+12%</b><span>unique page views</span></div>
+        <div><b>52% → 18%</b><span>bounce rate, about a 65% decrease</span></div>
+      </div>
+    </Glance>
+
+    <section class="case-sec" id="scope">
+      <h2>Scope</h2>
+      <p>Work with internal stakeholders (design, marketing and engineering) to redesign the website experience. Make Klarna.com a one-stop place for shoppers, with information about sales and discounts from the stores they love.</p>
+      <Fig src={roleimg} alt="Video call with the Klarna design team" />
+    </section>
+
+    <section class="case-sec" id="sprint">
+      <h2 class="sr-only">Market research and design sprint (NDA)</h2>
+      <Fig src={sprint} wide tone="dark" alt="Market research and design sprint (NDA). Before the design phase, we held a design sprint workshop in Singapore, where I was invited for my facilitation experience. We mapped the audience's pain points with current solutions and set benchmarks. Due to an NDA, I can't share the specific research and benchmarks. Photos from our design sprint session in Singapore." />
+    </section>
+
+    <section class="case-sec" id="framework">
+      <h2>Framework and layout</h2>
+      <p>Business requirements and user expectations paved the way towards site maps and a basic user flow. That flow became wireframes, and from there a skeleton structure of the website.</p>
+      <p>Pages were divided into modular sub-sections. These modules were dynamic and could move based on people’s behaviour and preferences, which made the site more useful and smarter.</p>
+      <Fig src={skeletons} alt="Wireframe skeletons of the modular page sections" />
+      <h3>Navigation</h3>
+      <p>The main navigation was redesigned around the main user needs. It became compact, showing only the relevant information.</p>
+      <Fig src={nav} alt="Redesigned compact main navigation" />
+      <h3>Interactions and transitions</h3>
+      <p>Interactions and transitions were added to modules based on their importance, making the website more interactive and delightful.</p>
+    </section>
+
+    <section class="case-sec" id="hifi">
+      <h2>High-fidelity designs</h2>
+      <p>After iterating on the wireframes, I created high-fidelity designs using Klarna’s design system components. Some components were custom designed to meet new requirements.</p>
+      <Fig src={hifi} alt="High-fidelity designs of the new Klarna.com pages" />
+    </section>
+
+    <section class="case-sec" id="impact">
+      <h2>Impact</h2>
+      <div class="impact">
+        <div><b>+35%</b><span>increase in overall click-through rate</span></div>
+        <div><b>+12%</b><span>increase in unique page views</span></div>
+        <div><b>−65%</b><span>bounce rate, down from 52% to 18%</span></div>
+      </div>
+      <Fig src={mockup} alt="The new Klarna.com on desktop and mobile" />
+    </section>
+
+    <NextCase href="/trikl" name="Trikl" text="People downloaded an investing app but weren’t creating accounts, and those who did weren’t investing. How might design fix this funnel?" />
+  </div>
+</Base>

@@ -1,0 +1,8 @@
+---
+import { Image } from 'astro:assets';
+const { src, alt, caption, wide = false, tone = 'light' } = Astro.props;
+---
+<figure class:list={['fig', wide && 'fig--wide', `fig--${tone}`]}>
+  <Image src={src} alt={alt} widths={[640, 1100, 1600]} sizes="(max-width: 900px) 100vw, 1100px" quality={80} />
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>

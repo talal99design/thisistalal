@@ -1,0 +1,9 @@
+---
+const { href, name, text } = Astro.props;
+---
+<a class="next-case" href={href}>
+  <span class="kicker">Next case study</span>
+  <strong>{name}</strong>
+  <span>{text}</span>
+  <span class="btn">Read case study <span aria-hidden="true">→</span></span>
+</a>

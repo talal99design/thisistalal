@@ -1,0 +1,16 @@
+---
+const { role, items, outcome, placeholder = false } = Astro.props;
+---
+<section class="glance">
+  <div class="glance-role">
+    <p class="kicker">My role</p>
+    <p>{role}</p>
+  </div>
+  <dl class="glance-meta">
+    {items.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}
+  </dl>
+  <div class:list={['glance-outcome', placeholder && 'is-placeholder']}>
+    <p class="kicker">Outcome</p>
+    <slot />
+  </div>
+</section>

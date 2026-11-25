@@ -1,0 +1,12 @@
+---
+const { title, variant = 'light', class: cls = '', id } = Astro.props;
+---
+<section class:list={['window', `window--${variant}`, cls]} id={id}>
+  <div class="titlebar">
+    <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
+    <span class="stripes" aria-hidden="true"></span>
+    <span class="wtitle">{title}</span>
+    <span class="stripes" aria-hidden="true"></span>
+  </div>
+  <div class="wbody"><slot /></div>
+</section>

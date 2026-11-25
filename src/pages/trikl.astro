@@ -1,0 +1,157 @@
+---
+import Base from '../layouts/Base.astro';
+import Window from '../components/Window.astro';
+import Fig from '../components/Fig.astro';
+import Glance from '../components/Glance.astro';
+import NextCase from '../components/NextCase.astro';
+import { Image } from 'astro:assets';
+import heroShots from '../assets/trikl-screens.png';
+import problem1 from '../assets/trikl/problem1.jpg';
+import baValue from '../assets/trikl/ba-valueprop.jpg';
+import baSignup from '../assets/trikl/ba-signup.jpg';
+import baInvest from '../assets/trikl/ba-invest.jpg';
+import role from '../assets/trikl/role.jpg';
+import critique from '../assets/trikl/critique.jpg';
+import inside from '../assets/trikl/inside.jpg';
+import competitive from '../assets/trikl/competitive.jpg';
+import ia from '../assets/trikl/ia.jpg';
+import wireframes from '../assets/trikl/wireframes.jpg';
+import hifiValue from '../assets/trikl/hifi-valueprop.jpg';
+import hifiOnb from '../assets/trikl/hifi-onboarding.jpg';
+import hifiKyc from '../assets/trikl/hifi-kyc.jpg';
+---
+<Base title="Trikl case study · Talal Athar">
+  <div class="case">
+    <Window title="trikl_case_study" variant="dark" class="case-head">
+      <a class="back" href="/">← Back to homepage</a>
+      <div class="case-head-grid">
+        <div>
+          <h1 class="case-title">Trikl</h1>
+          <p class="case-tags">UX Audit · Research · User Interface</p>
+          <p class="case-lede">Trikl is a money management app that lets users invest in mutual funds that provide decent returns. It focuses on Gen Z and helps them start investing from their college or university days.</p>
+        </div>
+        <div class="case-head-art">
+          <Image src={heroShots} alt="Redesigned Trikl app screens" widths={[600, 1000]} sizes="(max-width: 900px) 100vw, 560px" loading="eager" />
+        </div>
+      </div>
+    </Window>
+
+    <Glance
+      role="I was the only designer on the team. I reported to the Head of Product and worked closely with tech and marketing. I also wore the hat of a UX writer. My focus was redesigning the app to improve onboarding and increase the conversion rate of first-time investments."
+      items={[['Launch', 'August 2023'], ['Company', 'Trikl'], ['Time', '3 months / 6 sprints'], ['Team', 'Design, Product, Marketing, Engineering']]}
+    >
+      <div class="outcome-stats">
+        <div><b>8.8% → 14%</b><span>overall sign-up to active investor conversion</span></div>
+      </div>
+    </Glance>
+
+    <section class="case-sec" id="problems">
+      <h2>The two problems to solve</h2>
+      <div class="two-col">
+        <div class="problem">
+          <h3>1. Users don’t understand what Trikl actually does</h3>
+          <ul><li>Bad onboarding experience</li><li>No clear value proposition</li></ul>
+          <Fig src={problem1} alt="Old value proposition screens with a poll asking whether they explain what the app does" />
+        </div>
+        <div class="problem">
+          <h3>2. Users are not becoming active investors</h3>
+          <ul><li>The funnel from sign-up to investment is not optimised</li><li>Investing is difficult and not user friendly</li></ul>
+          <ol class="funnel">
+            <li><span>Sign-up completed</span><b>100% (baseline)</b></li>
+            <li><span>Profile created (of those who signed up)</span><b>56%</b></li>
+            <li><span>Active investor (of those with a profile)</span><b>15.7%</b></li>
+            <li class="total"><span>Overall sign-up to active investor</span><b>56% × 15.7% ≈ 8.8%</b></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-sec" id="before-after">
+      <h2>Before vs after</h2>
+      <p>Before showing my process, here is how a few key screens looked when I took over, next to my redesign. I’ve sampled selected screens only.</p>
+
+      <h3>Value proposition journey</h3>
+      <Fig src={baValue} alt="Value proposition screens, before and after the redesign" caption="Left: before. Right: redesign." />
+      <div class="why"><span aria-hidden="true">✎</span><p><b>What changed and why</b>The old screens used jargon like “automate savings” and “round-up transactions” with big images that said little. I rewrote them in plain language as a short story, so a new user understands what Trikl does before signing up.</p></div>
+
+      <h3>Sign-up journey</h3>
+      <Fig src={baSignup} alt="Sign-up screens, before and after the redesign" caption="Left: before. Right: redesign." />
+      <div class="why"><span aria-hidden="true">✎</span><p><b>What changed and why</b>Users couldn’t tell how many steps were left, and links were styled inconsistently. I added a clear step indicator, used one style for everything clickable, and made “Resend code” a simple tertiary link instead of a big tappable box.</p></div>
+
+      <h3>First-time investment journey</h3>
+      <Fig src={baInvest} alt="First investment screens, before and after the redesign" caption="Left: before. Right: redesign." />
+      <div class="why"><span aria-hidden="true">✎</span><p><b>What changed and why</b>The full identity check (KYC) used to sit right after sign-up, which stopped people who just wanted to look around. We moved it to the moment of the first investment, when the user is ready and the effort makes sense.</p></div>
+    </section>
+
+    <section class="case-sec" id="team">
+      <h2>The team</h2>
+      <Fig src={role} alt="Photos of the Trikl team" />
+    </section>
+
+    <section class="case-sec" id="critique">
+      <h2>Design critique</h2>
+      <p>Since the problem revolved around onboarding and experience, it was non-negotiable for me to understand the current state of the app and critique how it could be better. I did this for every flow. A few of my notes:</p>
+      <ul class="crit-notes">
+        <li>“How many steps are there? 1? 2? 3? Don’t make me guess.”</li>
+        <li>“Sign in is clickable and purple. Privacy Policy is clickable and black. You are teaching me a pattern and then breaking it on the same screen, within three lines.”</li>
+        <li>“Dark font on a dark background is a big no for accessibility.”</li>
+        <li>“What are these? Don’t make me think. Label these navigation items.”</li>
+      </ul>
+      <Fig src={critique} alt="Annotated critique of the old onboarding and profile creation screens. ID card images are blurred." caption="Onboarding and profile creation journeys, annotated. Personal ID details are blurred." />
+    </section>
+
+    <section class="case-sec" id="solution">
+      <h2>Solution</h2>
+      <ul class="stepper">
+        <li><a href="#inside">Inside knowledge</a></li>
+        <li><a href="#competitive">Competitive research</a></li>
+        <li><a href="#ia">Information architecture</a></li>
+        <li><a href="#wireframes">Wireframes</a></li>
+        <li><a href="#hifi">High-fidelity designs</a></li>
+      </ul>
+
+      <div class="step" id="inside">
+        <h3>1. Inside knowledge</h3>
+        <p>I started by asking everyone at the company what they knew about Trikl. The answers were all different, which told me the value proposition wasn’t clear even internally.</p>
+        <Fig src={inside} alt="Slack thread and survey answers to the question 'What does Trikl do?'" />
+      </div>
+
+      <div class="step" id="competitive">
+        <h3>2. Competitive research</h3>
+        <p>I looked at how other fintechs onboard and educate users through their value proposition screens: Robinhood, Finimize, Wealthsimple Invest and Wealthfront. Do they use visuals or text? In what proportion? How dense is the information?</p>
+        <Fig src={competitive} alt="Value proposition screens from Robinhood, Finimize, Wealthsimple Invest and Wealthfront" />
+        <div class="callout"><p>💡 <b>Learning:</b> fintech users have questions that visuals alone can’t answer. Successful fintech apps use a lot of text on their value prop screens to anticipate those questions. “Less is more” doesn’t usually apply here.</p></div>
+      </div>
+
+      <div class="step" id="ia">
+        <h3>3. Information architecture</h3>
+        <p>I mapped the full sitemap and flow of the existing app to zoom out and apply systems thinking. Can we remove a block? Can we bypass one? How are all the parts connected?</p>
+        <Fig src={ia} alt="Sitemap and flow diagram of the existing Trikl app" />
+        <div class="callout"><p>💡 <b>Learning:</b> having the entire “know your customer” journey right after sign-up was too overwhelming. What if the user just wants to explore? It was causing drop-off. We removed KYC from the start and introduced it at the point of investment, when the user is ready to invest. This was a game changer.</p></div>
+      </div>
+
+      <div class="step" id="wireframes">
+        <h3>4. Wireframes</h3>
+        <p>I borrowed from Christopher Nolan’s storytelling to narrate the value prop screens as a story, so they engage people rather than list features.</p>
+        <Fig src={wireframes} alt="Wireframes of the value proposition story" />
+      </div>
+
+      <div class="step" id="hifi">
+        <h3>5. High-fidelity designs</h3>
+        <Fig src={hifiValue} alt="High-fidelity value proposition screens" caption="Value proposition screens" />
+        <Fig src={hifiOnb} alt="High-fidelity onboarding journey screens" caption="Onboarding journey" />
+        <Fig src={hifiKyc} alt="High-fidelity profile and KYC journey screens" caption="Profile journey (know your customer), now at the point of first investment" />
+      </div>
+    </section>
+
+    <section class="case-sec" id="results">
+      <h2>Results</h2>
+      <div class="impact impact--one">
+        <div><b>8.8% → 14%</b><span>overall conversion from sign-up to active investor after the redesign launched</span></div>
+      </div>
+      <p>Making the value proposition clear up front and moving KYC to the point of first investment meant more of the people who signed up went on to invest.</p>
+    </section>
+
+    <NextCase href="/klarna" name="Klarna" text="Building a new Klarna web experience for shoppers that boosts click-through rates while lowering bounce rate." />
+  </div>
+</Base>

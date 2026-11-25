@@ -1,0 +1,120 @@
+---
+import Base from '../layouts/Base.astro';
+import Window from '../components/Window.astro';
+import { Image } from 'astro:assets';
+import globe from '../assets/about/globe.jpg';
+import climb1 from '../assets/about/climb1.jpg';
+import climb2 from '../assets/about/climb2.jpg';
+import climb3 from '../assets/about/climb3.jpg';
+import climb4 from '../assets/about/climb4.jpg';
+import m1 from '../assets/about/marathon1.jpg';
+import m2 from '../assets/about/marathon2.jpg';
+import m3 from '../assets/about/marathon3.jpg';
+import youtube from '../assets/about/youtube.jpg';
+import workshops from '../assets/about/workshops.jpg';
+import v1 from '../assets/about/values1.jpg';
+import v2 from '../assets/about/values2.jpg';
+import v3 from '../assets/about/values3.jpg';
+
+const peaks = [
+  { name: 'MkM', h: 4500, done: true },
+  { name: 'Tiger Peak', h: 4580, done: true },
+  { name: 'K2', h: 8611, done: false },
+  { name: 'Everest', h: 8849, done: false },
+];
+const max = 8849;
+const runs = [
+  { img: m1, city: 'Islamabad', year: 2022, time: '4h 50m' },
+  { img: m2, city: 'Dubai', year: 2023, time: '4h 29m' },
+  { img: m3, city: 'Sevilla', year: 2024, time: '3h 58m' },
+];
+const values = [
+  { img: v1, n: 1, q: 'You cannot improve what you cannot measure.' },
+  { img: v2, n: 2, q: 'Good design can’t be achieved by just playing with Figma. Get out there and test with users!' },
+  { img: v3, n: 3, q: 'Be the best storyteller you know! Nothing great was ever accomplished without enthusiasm and curiosity.' },
+];
+---
+<Base title="About · Talal Athar">
+  <div class="case about">
+    <Window title="about_me.txt" class="ab-intro">
+      <div class="ab-intro-grid">
+        <Image src={globe} alt="" class="ab-globe" widths={[214]} sizes="120px" />
+        <div>
+          <h1 class="ab-title">About me</h1>
+          <p class="ab-lede">I’m Talal, an engineer turned product designer based in Melbourne, Australia 🇦🇺. I’m an Australian permanent resident with full working rights.</p>
+          <p>My design craft orbits around visual hierarchy and information architecture. I’ve built a way of extending the double diamond design framework to include ai workflows. I’ve worked across dating, fintech, telco and ecommerce.</p>
+        </div>
+      </div>
+    </Window>
+
+    <section class="case-sec ab-sec">
+      <p class="kicker">01</p>
+      <h2>I’m from Islamabad, Pakistan</h2>
+    </section>
+
+    <section class="case-sec ab-sec">
+      <p class="kicker">02a</p>
+      <h2>My dream: to climb K2 and Everest</h2>
+      <div class="peaks" role="img" aria-label="Mountain heights to scale: MkM 4,500m and Tiger Peak 4,580m climbed; K2 8,611m and Everest 8,849m still to come">
+        {peaks.map((p) => (
+          <div class:list={['peak', p.done && 'is-done']} style={`--h:${(p.h / max) * 100}%`}>
+            <span class="peak-label"><b>{p.name}</b>{p.h.toLocaleString('en-AU')}m</span>
+            <svg class="peak-tri" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><polygon points="50,1 99,100 1,100" vector-effect="non-scaling-stroke" /></svg>
+            <span class="peak-state">{p.done ? '✓ Climbed' : 'Summiting soon…'}</span>
+          </div>
+        ))}
+        
+      </div>
+      <p class="ab-note">Heights to scale, from sea level.</p>
+      <div class="ab-photos">
+        {[climb1, climb2, climb3, climb4].map((c, i) => (
+          <figure class="polaroid" style={`--r:${[-3, 2, -1, 3][i]}deg`}><Image src={c} alt="Talal on a climbing expedition" widths={[300]} sizes="200px" /></figure>
+        ))}
+      </div>
+    </section>
+
+    <section class="case-sec ab-sec">
+      <p class="kicker">02b</p>
+      <h2>Another dream: a marathon in every major city</h2>
+      <div class="runs">
+        {runs.map((r) => (
+          <figure class="run">
+            <Image src={r.img} alt={`Talal at the ${r.city} Marathon ${r.year}`} widths={[300, 520]} sizes="(max-width: 700px) 100vw, 320px" />
+            <figcaption><b>{r.city} Marathon {r.year}</b><span>{r.time}</span></figcaption>
+          </figure>
+        ))}
+      </div>
+      <p class="ab-note">Getting faster every year: almost an hour off between Islamabad and Sevilla.</p>
+    </section>
+
+    <section class="case-sec ab-sec">
+      <p class="kicker">03</p>
+      <h2>I’m a design educator</h2>
+      <p>I love giving back to the community with whatever I learn. I’ve trained more than 3,000 students and employees on design, through workshops and my YouTube channel <a href="https://www.youtube.com/@xyTalal" target="_blank" rel="noopener">@xyTalal</a>.</p>
+      <div class="edu">
+        <figure class="fig"><Image src={youtube} alt="Talal's YouTube channel xyTalal with design tutorials" widths={[400, 556]} sizes="(max-width: 700px) 100vw, 320px" /></figure>
+        <figure class="fig"><Image src={workshops} alt="Collage of design workshops Talal has run" widths={[700, 1214]} sizes="(max-width: 700px) 100vw, 700px" /></figure>
+      </div>
+    </section>
+
+    <section class="case-sec ab-sec">
+      <p class="kicker">04</p>
+      <h2>My design values</h2>
+      <div class="values">
+        {values.map((v) => (
+          <figure class="value">
+            <Image src={v.img} alt="" widths={[420, 830]} sizes="(max-width: 700px) 100vw, 360px" />
+            <figcaption class="sticky-note"><span>My design philosophy ({v.n} of 3)</span>{v.q}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+
+    <a class="next-case" href="/contact">
+      <span class="kicker">Let’s talk</span>
+      <strong>Reach out</strong>
+      <span>Melbourne based, Australian PR with full working rights.</span>
+      <span class="btn">Get in touch <span aria-hidden="true">→</span></span>
+    </a>
+  </div>
+</Base>

@@ -1,0 +1,133 @@
+---
+import Base from '../layouts/Base.astro';
+import Window from '../components/Window.astro';
+import Sticker from '../components/Sticker.astro';
+import Notes from '../components/Notes.astro';
+import EqlBanner from '../components/EqlBanner.astro';
+import { Image } from 'astro:assets';
+import hero from '../assets/hero-mcg.jpg';
+import trikl from '../assets/trikl-screens.png';
+import kStores from '../assets/klarna-stores.png';
+import kCampaign from '../assets/klarna-campaign.png';
+
+const studies = [
+  {
+    slug: 'trikl', name: 'TRIKL', file: 'trikl_case_study',
+    challenge: 'Users have downloaded a money investment app, but they are not creating accounts. Those who have created accounts are not investing. How might we fix this awareness and funnel problem through design…?',
+    meta: [['Interface', 'Mobile'], ['Platform', 'B2C'], ['Industry', 'Fintech'], ['Year', '2023']],
+  },
+  {
+    slug: 'klarna', name: 'KLARNA', file: 'klarna_case_study',
+    challenge: 'Building a new Klarna web experience for shopping consumers that boosts click-through rates while decreasing average bounce-off rate.',
+    meta: [['Interface', 'Web'], ['Platform', 'B2C'], ['Industry', 'Commerce'], ['Year', '2023']],
+  },
+];
+---
+<Base>
+  <div class="stickers hide-sm" aria-hidden="true">
+    <Sticker x="calc(50% + 440px)" y="1455px" rotate={6}>🏔️<span>K2 soon…</span></Sticker>
+    <Sticker x="calc(50% + 360px)" y="768px" rotate={-4}>✏️<span>IA nerd</span></Sticker>
+    <Sticker x="calc(50% - 660px)" y="1900px" rotate={-8}>🏃‍♂️<span>marathoner</span></Sticker>
+  </div>
+
+  <Window title="hello_world.jpg" class="hero">
+    <div class="hero-stage">
+      <Image src={hero} alt="Talal standing at the MCG in Melbourne at sunset" class="hero-img" loading="eager" fetchpriority="high" widths={[800, 1280, 1800, 2400]} sizes="(max-width: 1200px) 100vw, 1200px" quality={72} />
+      <div class="hero-copy">
+        <div class="sticker tag hs-tag" data-drag style="--r:-5deg" title="Drag me">
+          <span class="tag-top">HELLO<br /><small>my name is</small></span><span class="tag-name">Talal</span>
+        </div>
+        <h1><span class="ln">I’m an engineer turned ai‑native product </span><span class="ln">designer who wants to design the internet </span><span class="ln">we all fell in love with growing up!</span></h1>
+        <div class="badges">
+          <div class="sticker b-loc" data-drag style="--r:-4deg" title="Drag me">
+            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z" fill="#e04b4b" stroke="#1d1b3a" stroke-width="1.5"/><circle cx="12" cy="10" r="2.6" fill="#fff" stroke="#1d1b3a" stroke-width="1.2"/></svg>
+            <span>Melbourne based</span>
+          </div>
+          <div class="sticker b-pr" data-drag style="--r:3deg" title="Drag me">
+            <span class="pr-stripe" aria-hidden="true"></span>
+            <span class="pr-head"><span aria-hidden="true">🇦🇺</span> Commonwealth of Australia</span>
+            <strong>Permanent Resident (PR)</strong>
+            <span class="pr-sub">Full working rights</span>
+            <span class="pr-stamp" aria-hidden="true">✓ APPROVED</span>
+          </div>
+          <div class="sticker b-exp" data-drag style="--r:-7deg" title="Drag me">
+            <span class="exp-num">5</span><span class="exp-txt"><b>years</b>designing products</span>
+          </div>
+          <div class="sticker b-ind" data-drag style="--r:2deg" title="Drag me">
+            <span class="ind-label">Industries</span>
+            <span class="ind-chips"><i class="c1">Fintech</i><i class="c2">Commerce</i><i class="c3">SaaS</i><i class="c4">Dating</i></span>
+          </div>
+        </div>
+      </div>
+      <div class="cta-row hero-cta">
+          <a class="btn btn--light" href="#work">See my work ↓</a>
+          <a class="btn" href="mailto:talalathar.au@gmail.com">Get in touch</a>
+        </div>
+    </div>
+  </Window>
+
+  <EqlBanner />
+
+  <h2 class="folder-label" id="work"><span class="folder" aria-hidden="true">📁</span> Case studies</h2>
+
+  {studies.map((s, i) => (
+    <div class="study-link" data-href={`/${s.slug}`}>
+    <Window title={s.file} variant="dark" class="study">
+      <div class="study-grid">
+        <div class="study-copy">
+          <h3 class="study-name">{s.name}</h3>
+          <p class="eyebrow">Design challenge</p>
+          <p class="challenge">{s.challenge}</p>
+          <dl class="meta">
+            {s.meta.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}
+          </dl>
+          <a class="btn" href={`/${s.slug}`}>View case study <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="study-art">
+          {i === 0 ? (
+            <Image src={trikl} alt="Three redesigned Trikl app screens" class="art-trikl" widths={[480, 747]} sizes="(max-width: 760px) 90vw, 640px" />
+          ) : (
+            <div class="art-klarna">
+              <Image src={kStores} alt="Klarna featured stores and collections page" class="k1" widths={[400, 594]} sizes="(max-width: 760px) 70vw, 460px" />
+              <Image src={kCampaign} alt="Klarna 'Who's a Good Shopper' campaign module" class="k2" widths={[480, 711]} sizes="(max-width: 760px) 75vw, 540px" />
+            </div>
+          )}
+        </div>
+      </div>
+    </Window>
+    </div>
+  ))}
+
+  <div class="read-cursor" aria-hidden="true">
+    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M3 5.5C5.5 4.5 9 4.6 12 6.5c3-1.9 6.5-2 9-1v13c-2.5-1-6-.9-9 1-3-1.9-6.5-2-9-1z" fill="currentColor"/><path d="M12 6.5v13" stroke="rgba(0,0,0,.25)" stroke-width="1.2"/></svg>
+    <span class="rc-label">read case study</span>
+  </div>
+  <script>
+    const cur = document.querySelector<HTMLElement>('.read-cursor')!;
+    const label = cur.querySelector<HTMLElement>('.rc-label')!;
+    const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+    let tx = 0, ty = 0, x = 0, y = 0, raf = 0;
+    const loop = () => { x += (tx - x) * 0.22; y += (ty - y) * 0.22; cur.style.translate = `${x}px ${y}px`; raf = Math.abs(tx - x) + Math.abs(ty - y) > 0.3 ? requestAnimationFrame(loop) : 0; };
+    document.querySelectorAll<HTMLElement>('.study-link').forEach((card) => {
+      card.addEventListener('click', (e) => { if (!(e.target as HTMLElement).closest('a')) location.href = card.dataset.href!; });
+      if (!fine) return;
+      card.addEventListener('pointerenter', (e) => { label.textContent = card.dataset.cursor || 'read case study'; tx = x = e.clientX; ty = y = e.clientY; cur.classList.add('on'); loop(); });
+      card.addEventListener('pointermove', (e) => { tx = e.clientX; ty = e.clientY; if (!raf) raf = requestAnimationFrame(loop); });
+      card.addEventListener('pointerleave', () => cur.classList.remove('on'));
+    });
+  </script>
+
+  <Notes />
+
+  <Window title="reach_out.app" class="contact-strip">
+    <div class="contact-row">
+      <p>Hiring for a product designer? Let’s talk.</p>
+      <div class="cta-row">
+        <a class="btn" href="mailto:talalathar.au@gmail.com">Email me</a>
+        <a class="btn btn--ghost" href="tel:+61429916442">+61 429 916 442</a>
+        <a class="btn btn--ghost" href="https://www.linkedin.com/in/talalathar/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
+    </div>
+  </Window>
+  <footer class="foot">© {new Date().getFullYear()} Talal Athar · Melbourne, Australia</footer>
+</Base>
