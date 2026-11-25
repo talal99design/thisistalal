@@ -26,7 +26,7 @@ const Star = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3 6.6
     <div class="eql-cards" aria-label="Research highlights">
       {cards.map((c, i) => (
         <figure class={`eql-card c${i}`} style={`--t:${c.tilt}deg`}>
-          <div class="eql-thumb"><Image src={c.img} alt="" widths={[360, 620]} sizes="300px" /></div>
+          <div class="eql-thumb"><Image src={c.img} alt="" widths={[300, 600]} sizes="300px" /></div>
           <figcaption><strong>{c.title}</strong><span>{c.by}</span></figcaption>
         </figure>
       ))}
